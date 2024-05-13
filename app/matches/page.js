@@ -12,6 +12,10 @@ export default function LeaderBoard() {
   const [modalVisible, setModalVisible] = useState(false);
   const [CreateMatchModal, setCreateMatchModal] = useState(false);
   const [toastDisplay, setToastDisplay] = useState(true);
+  const [player1, setPlayer1] = useState("");
+  const [player2, setPlayer2] = useState("");
+  const [player3, setPlayer3] = useState("");
+  const [player4, setPlayer4] = useState("");
 
   // Dummy array with player data
   const dummyData = [
@@ -32,6 +36,21 @@ export default function LeaderBoard() {
   };
   const toggleCreateMatchModal = () => {
     setCreateMatchModal(!CreateMatchModal);
+  };
+
+  const handleStartMatch = () => {
+    const players = [player1, player2, player3, player4];
+    const repeatedPlayers = new Set(players).size !== players.length;
+
+    if (repeatedPlayers) {
+      alert(
+        "A player is being repeated, please choose 4 different players to start the match"
+      );
+      return;
+    }
+
+    // Close the modal if no players are repeated (assuming this is the desired behavior)
+    setCreateMatchModal(false);
   };
 
   return (
@@ -256,71 +275,83 @@ export default function LeaderBoard() {
                       {/* Team 1 selection */}
                       <form class="max-w-sm mx-auto">
                         <label
-                          for="countries"
+                          for="player1"
                           class="block mb-2 text-lg font-medium text-gray-900"
                         >
                           Select Team 1
                         </label>
                         <select
-                          id="countries"
+                          id="player1"
+                          className="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
+                          onChange={(e) => setPlayer1(e.target.value)}
+                          value={player1}
                           class="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
                         >
                           {/* <option selected>Choose player 1</option> */}
-                          <option value="US">Mayank</option>
-                          <option value="CA">Sathish</option>
-                          <option value="FR">Dev</option>
-                          <option value="DE">Bhavya</option>
-                          <option value="DE">Nakul</option>
-                          <option value="DE">Mihir</option>
-                          <option value="DE">Anirudh</option>
+                          <option value="DE1">Bhavya</option>
+                          <option value="DE2">Nakul</option>
+                          <option value="DE3">Mihir</option>
+                          <option value="DE4">Anirudh</option>
+                          <option value="DE5">Mayank</option>
+                          <option value="DE6">Sathish</option>
+                          <option value="DE7">Dev</option>
                         </select>
                         <select
-                          id="countries"
+                          id="player2"
+                          className="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
+                          onChange={(e) => setPlayer2(e.target.value)}
+                          value={player2}
                           class="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
                         >
                           {/* <option selected>Choose player 2</option> */}
-                          <option value="US">Mayank</option>
-                          <option value="CA">Sathish</option>
-                          <option value="FR">Dev</option>
-                          <option value="DE">Bhavya</option>
-                          <option value="DE">Nakul</option>
-                          <option value="DE">Mihir</option>
-                          <option value="DE">Anirudh</option>
+                          <option value="DE1">Bhavya</option>
+                          <option value="DE2">Nakul</option>
+                          <option value="DE3">Mihir</option>
+                          <option value="DE4">Anirudh</option>
+                          <option value="DE5">Mayank</option>
+                          <option value="DE6">Sathish</option>
+                          <option value="DE7">Dev</option>
                         </select>
                       </form>
                       {/* Team 2 selection */}
                       <form class="max-w-sm mx-auto">
                         <label
-                          for="countries"
+                          for="player3"
                           class="block mb-2 mt-2 text-lg font-medium text-gray-900"
                         >
                           Select Team 2
                         </label>
                         <select
-                          id="countries"
+                          id="player3"
+                          className="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
+                          onChange={(e) => setPlayer3(e.target.value)}
+                          value={player3}
                           class="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
                         >
                           {/* <option selected>Choose player 3</option> */}
-                          <option value="US">Mayank</option>
-                          <option value="CA">Sathish</option>
-                          <option value="FR">Dev</option>
-                          <option value="DE">Bhavya</option>
-                          <option value="DE">Nakul</option>
-                          <option value="DE">Mihir</option>
-                          <option value="DE">Anirudh</option>
+                          <option value="DE1">Bhavya</option>
+                          <option value="DE2">Nakul</option>
+                          <option value="DE3">Mihir</option>
+                          <option value="DE4">Anirudh</option>
+                          <option value="DE5">Mayank</option>
+                          <option value="DE6">Sathish</option>
+                          <option value="DE7">Dev</option>
                         </select>
                         <select
-                          id="countries"
+                          id="player4"
+                          className="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
+                          onChange={(e) => setPlayer4(e.target.value)}
+                          value={player4}
                           class="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
                         >
                           {/* <option selected>Choose player 4</option> */}
-                          <option value="US">Mayank</option>
-                          <option value="CA">Sathish</option>
-                          <option value="FR">Dev</option>
-                          <option value="DE">Bhavya</option>
-                          <option value="DE">Nakul</option>
-                          <option value="DE">Mihir</option>
-                          <option value="DE">Anirudh</option>
+                          <option value="DE1">Bhavya</option>
+                          <option value="DE2">Nakul</option>
+                          <option value="DE3">Mihir</option>
+                          <option value="DE4">Anirudh</option>
+                          <option value="DE5">Mayank</option>
+                          <option value="DE6">Sathish</option>
+                          <option value="DE7">Dev</option>
                         </select>
                       </form>
                     </div>
@@ -329,6 +360,7 @@ export default function LeaderBoard() {
                 {/* Buttons here */}
                 <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                   <button
+                    onClick={toggleCreateMatchModal}
                     type="button"
                     className="w-full mt-3 inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
                   >
@@ -336,6 +368,7 @@ export default function LeaderBoard() {
                   </button>
                   <button
                     type="button"
+                    onClick={handleStartMatch}
                     className="w-full mt-3 inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
                   >
                     Start Match
