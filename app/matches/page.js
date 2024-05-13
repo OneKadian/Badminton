@@ -118,46 +118,69 @@ export default function LeaderBoard() {
 
                 <td className="px-8 py-8 text-lg flex">
                   {/* Image 1 */}
-                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-4">
-                    <Image
-                      src={MuskImage}
-                      alt="muskImage"
-                      height={64}
-                      width={64}
-                    />
-                  </span>
-
+                  <div className="flex flex-col justify-center items-center">
+                    <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
+                      <Image
+                        src={MuskImage}
+                        alt="muskImage"
+                        height={64}
+                        width={64}
+                      />
+                    </span>
+                    <BadgeGroup alignment="center" className="mt-2">
+                      {" "}
+                      <BadgeMessage>{player1}</BadgeMessage>{" "}
+                    </BadgeGroup>
+                  </div>
                   {/* Image 2 */}
-                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-4">
-                    <Image
-                      src={MuskImage}
-                      alt="muskImage"
-                      height={64}
-                      width={64}
-                    />
-                  </span>
+                  <div className="flex flex-col justify-center items-center">
+                    <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
+                      <Image
+                        src={MuskImage}
+                        alt="muskImage"
+                        height={64}
+                        width={64}
+                      />
+                    </span>
+                    <BadgeGroup alignment="center" className="mt-2">
+                      {" "}
+                      <BadgeMessage>{player1}</BadgeMessage>{" "}
+                    </BadgeGroup>
+                  </div>
                   {/* Vs Text */}
                   <span className="text-lg text-black font-bold flex items-center mx-2">
                     VS
                   </span>
 
                   {/* Repeat for Images 3 and 4 (optional) */}
-                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-4">
-                    <Image
-                      src={MuskImage}
-                      alt="muskImage"
-                      height={64}
-                      width={64}
-                    />
-                  </span>
-                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-4">
-                    <Image
-                      src={MuskImage}
-                      alt="muskImage"
-                      height={64}
-                      width={64}
-                    />
-                  </span>
+                  <div className="flex flex-col justify-center items-center">
+                    <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
+                      <Image
+                        src={MuskImage}
+                        alt="muskImage"
+                        height={64}
+                        width={64}
+                      />
+                    </span>
+                    <BadgeGroup alignment="center" className="mt-2">
+                      {" "}
+                      <BadgeMessage>{player1}</BadgeMessage>{" "}
+                    </BadgeGroup>
+                  </div>
+                  <div className="flex flex-col justify-center items-center">
+                    <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
+                      <Image
+                        src={MuskImage}
+                        alt="muskImage"
+                        height={64}
+                        width={64}
+                      />
+                    </span>
+                    <BadgeGroup alignment="center" className="mt-2">
+                      {" "}
+                      <BadgeMessage>{player1}</BadgeMessage>{" "}
+                    </BadgeGroup>
+                  </div>
                 </td>
                 <td className="px-8 py-8 text-lg">{player.Score}</td>
                 {/* <td className="px-8 py-8 text-lg">{player.AMP}</td> */}
@@ -451,7 +474,7 @@ export default function LeaderBoard() {
                       </div>
                     </div>
                     <div className="flex mt-4 w-full">
-                      <div className="flex w-1/2 mr-10">
+                      <div className="flex w-1/2 mr-4">
                         {/* Name tag 1 */}
                         <BadgeGroup alignment="center" className="mt-2">
                           {" "}
@@ -463,7 +486,7 @@ export default function LeaderBoard() {
                           <BadgeMessage>{player2}</BadgeMessage>{" "}
                         </BadgeGroup>
                       </div>
-                      <div className="flex w-1/2 ml-10">
+                      <div className="flex w-1/2 ml-4">
                         {/* Name tag 3 */}
                         <BadgeGroup alignment="center" className="mt-2">
                           {" "}

@@ -19,7 +19,7 @@ const Podium = () => {
           </div>
           {/* <p className="text-center text-black">Annecy</p> */}
           <BadgeGroup alignment="center" className="mt-2">
-            <BadgeMessage>Mihir Mehra</BadgeMessage>
+            <BadgeMessage>Mihir </BadgeMessage>
           </BadgeGroup>
           {/* <BadgeGroup2 alignment="center" className="mt-2">
             <BadgeMessage>AMP 19</BadgeMessage>
@@ -72,7 +72,7 @@ const Podium = () => {
             </div>
           </div>
           <BadgeGroup alignment="center" className="mt-2">
-            <BadgeMessage>Bhavya Kalra</BadgeMessage>
+            <BadgeMessage>Bhavya </BadgeMessage>
           </BadgeGroup>
           {/* <BadgeGroup2 alignment="center" className="mt-2">
             <BadgeMessage>AMP 18</BadgeMessage>

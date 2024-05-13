@@ -38,7 +38,7 @@ export default function LeaderBoard() {
                 Rank
               </th>
               <th scope="col" className="px-8 py-8">
-                Name
+                Player
               </th>
               <th scope="col" className="px-8 py-8">
                 Matches
@@ -67,14 +67,20 @@ export default function LeaderBoard() {
                 </th>
                 <td className="px-8 py-8 text-lg">
                   {/* {player.name} */}
-                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
-                    <Image
-                      src={MuskImage}
-                      alt="muskImage"
-                      height={64}
-                      width={64}
-                    />
-                  </span>
+                  <div className="flex flex-col justify-center items-center">
+                    <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
+                      <Image
+                        src={MuskImage}
+                        alt="muskImage"
+                        height={64}
+                        width={64}
+                      />
+                    </span>
+                    <BadgeGroup alignment="center" className="mt-2">
+                      {" "}
+                      <BadgeMessage>{player.name}</BadgeMessage>{" "}
+                    </BadgeGroup>
+                  </div>
                 </td>
                 <td className="px-8 py-8 text-lg">{player.matchesPlayed}</td>
                 <td className="px-8 py-8 text-lg">{player.AMP}</td>
