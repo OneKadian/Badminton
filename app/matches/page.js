@@ -15,10 +15,10 @@ export default function LeaderBoard() {
   const [CreateMatchModal, setCreateMatchModal] = useState(false);
   const [StartMatchModal, setStartMatchModal] = useState(false);
   const [toastDisplay, setToastDisplay] = useState(true);
-  const [player1, setPlayer1] = useState("");
-  const [player2, setPlayer2] = useState("");
-  const [player3, setPlayer3] = useState("");
-  const [player4, setPlayer4] = useState("");
+  const [player1, setPlayer1] = useState("Bhavya");
+  const [player2, setPlayer2] = useState("Bhavya");
+  const [player3, setPlayer3] = useState("Bhavya");
+  const [player4, setPlayer4] = useState("Bhavya");
 
   // Dummy array with player data
   const dummyData = [
@@ -295,13 +295,13 @@ export default function LeaderBoard() {
                           class="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
                         >
                           {/* <option selected>Choose player 1</option> */}
-                          <option value="DE1">Bhavya</option>
-                          <option value="DE2">Nakul</option>
-                          <option value="DE3">Mihir</option>
-                          <option value="DE4">Anirudh</option>
-                          <option value="DE5">Mayank</option>
-                          <option value="DE6">Sathish</option>
-                          <option value="DE7">Dev</option>
+                          <option value="Bhavya">Bhavya</option>
+                          <option value="Nakul">Nakul</option>
+                          <option value="Mihir">Mihir</option>
+                          <option value="Anirudh">Anirudh</option>
+                          <option value="Mayank">Mayank</option>
+                          <option value="Sathish">Sathish</option>
+                          <option value="Dev">Dev</option>
                         </select>
                         <select
                           id="player2"
@@ -311,13 +311,13 @@ export default function LeaderBoard() {
                           class="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
                         >
                           {/* <option selected>Choose player 2</option> */}
-                          <option value="DE1">Bhavya</option>
-                          <option value="DE2">Nakul</option>
-                          <option value="DE3">Mihir</option>
-                          <option value="DE4">Anirudh</option>
-                          <option value="DE5">Mayank</option>
-                          <option value="DE6">Sathish</option>
-                          <option value="DE7">Dev</option>
+                          <option value="Bhavya">Bhavya</option>
+                          <option value="Nakul">Nakul</option>
+                          <option value="Mihir">Mihir</option>
+                          <option value="Anirudh">Anirudh</option>
+                          <option value="Mayank">Mayank</option>
+                          <option value="Sathish">Sathish</option>
+                          <option value="Dev">Dev</option>
                         </select>
                       </form>
                       {/* Team 2 selection */}
@@ -336,13 +336,13 @@ export default function LeaderBoard() {
                           class="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
                         >
                           {/* <option selected>Choose player 3</option> */}
-                          <option value="DE1">Bhavya</option>
-                          <option value="DE2">Nakul</option>
-                          <option value="DE3">Mihir</option>
-                          <option value="DE4">Anirudh</option>
-                          <option value="DE5">Mayank</option>
-                          <option value="DE6">Sathish</option>
-                          <option value="DE7">Dev</option>
+                          <option value="Bhavya">Bhavya</option>
+                          <option value="Nakul">Nakul</option>
+                          <option value="Mihir">Mihir</option>
+                          <option value="Anirudh">Anirudh</option>
+                          <option value="Mayank">Mayank</option>
+                          <option value="Sathish">Sathish</option>
+                          <option value="Dev">Dev</option>
                         </select>
                         <select
                           id="player4"
@@ -352,13 +352,13 @@ export default function LeaderBoard() {
                           class="bg-gray-50 border my-1 border-gray-300 text-gray-900 text-sm rounded-lg block w-full px-2.5"
                         >
                           {/* <option selected>Choose player 4</option> */}
-                          <option value="DE1">Bhavya</option>
-                          <option value="DE2">Nakul</option>
-                          <option value="DE3">Mihir</option>
-                          <option value="DE4">Anirudh</option>
-                          <option value="DE5">Mayank</option>
-                          <option value="DE6">Sathish</option>
-                          <option value="DE7">Dev</option>
+                          <option value="Bhavya">Bhavya</option>
+                          <option value="Nakul">Nakul</option>
+                          <option value="Mihir">Mihir</option>
+                          <option value="Anirudh">Anirudh</option>
+                          <option value="Mayank">Mayank</option>
+                          <option value="Sathish">Sathish</option>
+                          <option value="Dev">Dev</option>
                         </select>
                       </form>
                     </div>
@@ -472,7 +472,7 @@ export default function LeaderBoard() {
                         {/* Name tag 4 */}
                         <BadgeGroup alignment="center" className="mt-2">
                           {" "}
-                          <BadgeMessage>{player3} </BadgeMessage>{" "}
+                          <BadgeMessage>{player4} </BadgeMessage>{" "}
                         </BadgeGroup>
                       </div>
                     </div>
