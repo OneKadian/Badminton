@@ -9,6 +9,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import BadgeGroup from "../components/BadgeGroup";
 import BadgeMessage from "../components/BadgeMessage";
 import Link from "next/link";
+import { FaArrowAltCircleDown } from "react-icons/fa";
+import { FaArrowAltCircleUp } from "react-icons/fa";
 
 export default function LeaderBoard() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -497,6 +499,32 @@ export default function LeaderBoard() {
                           {" "}
                           <BadgeMessage>{player4} </BadgeMessage>{" "}
                         </BadgeGroup>
+                      </div>
+                    </div>
+                    <div className="flex mt-4 w-full">
+                      <div className="flex w-1/2 justify-center">
+                        <p className="text-4xl font-semibold text-black">21</p>
+                      </div>
+                      <div className="flex w-1/2 justify-center">
+                        <p className="text-4xl font-semibold text-black">17</p>
+                      </div>
+                    </div>
+                    <div className="w-full flex mt-6">
+                      <div className="w-1/2 flex">
+                        <span className="rounded-full h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                          <FaArrowAltCircleUp className="text-green-300 h-16 w-16" />
+                        </span>
+                        <span className="rounded-full h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                          <FaArrowAltCircleDown className="text-red-600 h-16 w-16" />
+                        </span>
+                      </div>
+                      <div className="w-1/2 flex">
+                        <span className="rounded-full h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                          <FaArrowAltCircleUp className="text-green-300 h-16 w-16" />
+                        </span>
+                        <span className="rounded-full h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                          <FaArrowAltCircleDown className="text-red-600 h-16 w-16" />
+                        </span>
                       </div>
                     </div>
                   </div>
