@@ -6,11 +6,14 @@ import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
 import { motion, AnimatePresence } from "framer-motion";
+import BadgeGroup from "../components/BadgeGroup";
+import BadgeMessage from "../components/BadgeMessage";
 import Link from "next/link";
 
 export default function LeaderBoard() {
   const [modalVisible, setModalVisible] = useState(false);
   const [CreateMatchModal, setCreateMatchModal] = useState(false);
+  const [StartMatchModal, setStartMatchModal] = useState(false);
   const [toastDisplay, setToastDisplay] = useState(true);
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
@@ -37,6 +40,9 @@ export default function LeaderBoard() {
   const toggleCreateMatchModal = () => {
     setCreateMatchModal(!CreateMatchModal);
   };
+  const toggleStartMatchModal = () => {
+    setStartMatchModal(!StartMatchModal);
+  };
 
   const handleStartMatch = () => {
     const players = [player1, player2, player3, player4];
@@ -51,6 +57,7 @@ export default function LeaderBoard() {
 
     // Close the modal if no players are repeated (assuming this is the desired behavior)
     setCreateMatchModal(false);
+    setStartMatchModal(true);
   };
 
   return (
@@ -372,6 +379,120 @@ export default function LeaderBoard() {
                     className="w-full mt-3 inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
                   >
                     Start Match
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {StartMatchModal && (
+          <div className="fixed z-10 inset-0 overflow-y-auto">
+            <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+              <div
+                className="fixed inset-0 transition-opacity"
+                aria-hidden="true"
+              >
+                <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+              </div>
+              <span
+                className="hidden sm:inline-block sm:align-middle sm:h-screen"
+                aria-hidden="true"
+              >
+                &#8203;
+              </span>
+              <div
+                className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-center sm:max-w-lg mx-auto"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modal-headline"
+              >
+                <div className="bg-white w-[380px] flex justify-center pt-5 pb-4 ">
+                  <div className="w-[300px]">
+                    <div className=" mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10">
+                      <div className="px-8 py-8 text-lg flex">
+                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-4">
+                          <Image
+                            src={MuskImage}
+                            alt="muskImage"
+                            height={64}
+                            width={64}
+                          />
+                        </span>
+                        {/* Image 2 */}
+                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-4">
+                          <Image
+                            src={MuskImage}
+                            alt="muskImage"
+                            height={64}
+                            width={64}
+                          />
+                        </span>
+                        {/* Vs Text */}
+                        <span className="text-lg text-black font-bold flex items-center mx-2">
+                          VS
+                        </span>
+                        {/* Repeat for Images 3 and 4 (optional) */}
+                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-4">
+                          <Image
+                            src={MuskImage}
+                            alt="muskImage"
+                            height={64}
+                            width={64}
+                          />
+                        </span>
+                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-4">
+                          <Image
+                            src={MuskImage}
+                            alt="muskImage"
+                            height={64}
+                            width={64}
+                          />
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex mt-4 w-full">
+                      <div className="flex w-1/2 mr-10">
+                        {/* Name tag 1 */}
+                        <BadgeGroup alignment="center" className="mt-2 mr-4">
+                          {" "}
+                          <BadgeMessage>{player1}</BadgeMessage>{" "}
+                        </BadgeGroup>
+                        {/* Name tag 2 */}
+                        <BadgeGroup alignment="center" className="mt-2">
+                          {" "}
+                          <BadgeMessage>{player2}</BadgeMessage>{" "}
+                        </BadgeGroup>
+                      </div>
+                      <div className="flex w-1/2 ml-10">
+                        {/* Name tag 3 */}
+                        <BadgeGroup alignment="center" className="mt-2">
+                          {" "}
+                          <BadgeMessage>{player3} </BadgeMessage>{" "}
+                        </BadgeGroup>
+                        {/* Name tag 4 */}
+                        <BadgeGroup alignment="center" className="mt-2">
+                          {" "}
+                          <BadgeMessage>{player3} </BadgeMessage>{" "}
+                        </BadgeGroup>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Buttons here */}
+                <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                  <button
+                    onClick={toggleStartMatchModal}
+                    type="button"
+                    className="w-full mt-3 inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    // onClick={handleStartMatch}
+                    className="w-full mt-3 inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  >
+                    End Match
                   </button>
                 </div>
               </div>

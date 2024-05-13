@@ -1,6 +1,5 @@
 import SectionContainer from "./SectionContainer";
 import BadgeGroup from "./BadgeGroup";
-import BadgeGroup2 from "./BadgeGroup2";
 import BadgeMessage from "./BadgeMessage";
 import { RiVipCrownFill } from "react-icons/ri";
 import MuskImage from "../public/musk.jpg";

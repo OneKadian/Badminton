@@ -213,3 +213,226 @@
 //     </div>
 //   </div>
 // </div>
+
+{
+  StartMatchModal && (
+    <div className="fixed z-10 inset-0 overflow-y-auto">
+      <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
+          <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        <span
+          className="hidden sm:inline-block sm:align-middle sm:h-screen"
+          aria-hidden="true"
+        >
+          &#8203;
+        </span>
+        <div
+          className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-center sm:max-w-lg mx-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-headline"
+        >
+          <div className="bg-white flex flex-wrap justify-between w-[380px] pt-5 pb-4">
+            {/* Image 1 and BadgeMessage */}
+            <div className="flex flex-col items-center w-1/2">
+              <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10">
+                <div className="px-8 py-8 text-lg flex">
+                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-4">
+                    <Image
+                      src={MuskImage}
+                      alt="muskImage"
+                      height={64}
+                      width={64}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="flex mt-2">
+                <BadgeGroup alignment="center" className="mt-2">
+                  <BadgeMessage>Mihir</BadgeMessage>
+                </BadgeGroup>
+              </div>
+            </div>
+
+            {/* Image 2 and BadgeMessage */}
+            <div className="flex flex-col items-center w-1/2">
+              <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10">
+                <div className="px-8 py-8 text-lg flex">
+                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-4">
+                    <Image
+                      src={MuskImage}
+                      alt="muskImage"
+                      height={64}
+                      width={64}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="flex mt-2">
+                <BadgeGroup alignment="center" className="mt-2">
+                  <BadgeMessage>Mayank</BadgeMessage>
+                </BadgeGroup>
+              </div>
+            </div>
+
+            {/* Vs Text */}
+            <div className="w-full flex justify-center items-center mt-4">
+              <span className="text-lg text-black font-bold flex items-center mx-2">
+                VS
+              </span>
+            </div>
+
+            {/* Image 3 and BadgeMessage */}
+            <div className="flex flex-col items-center w-1/2">
+              <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10">
+                <div className="px-8 py-8 text-lg flex">
+                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-4">
+                    <Image
+                      src={MuskImage}
+                      alt="muskImage"
+                      height={64}
+                      width={64}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="flex mt-2">
+                <BadgeGroup alignment="center" className="mt-2">
+                  <BadgeMessage>Mayank</BadgeMessage>
+                </BadgeGroup>
+              </div>
+            </div>
+
+            {/* Image 4 and BadgeMessage */}
+            <div className="flex flex-col items-center w-1/2">
+              <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10">
+                <div className="px-8 py-8 text-lg flex">
+                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-4">
+                    <Image
+                      src={MuskImage}
+                      alt="muskImage"
+                      height={64}
+                      width={64}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="flex mt-2">
+                <BadgeGroup alignment="center" className="mt-2">
+                  <BadgeMessage>Mayank</BadgeMessage>
+                </BadgeGroup>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+{
+  StartMatchModal && (
+    <div className="fixed z-10 inset-0 overflow-y-auto">
+      <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
+          <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+        <span
+          className="hidden sm:inline-block sm:align-middle sm:h-screen"
+          aria-hidden="true"
+        >
+          &#8203;
+        </span>
+        <div
+          className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-center sm:max-w-lg mx-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-headline"
+        >
+          <div className="bg-white w-[380px] flex justify-center pt-5 pb-4 ">
+            <div className="w-[300px]">
+              <div className=" mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10">
+                <div className="px-8 py-8 text-lg flex">
+                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-4">
+                    <Image
+                      src={MuskImage}
+                      alt="muskImage"
+                      height={64}
+                      width={64}
+                    />
+                  </span>
+                  {/* Image 2 */}
+                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-4">
+                    <Image
+                      src={MuskImage}
+                      alt="muskImage"
+                      height={64}
+                      width={64}
+                    />
+                  </span>
+                  {/* Vs Text */}
+                  <span className="text-lg text-black font-bold flex items-center mx-2">
+                    VS
+                  </span>
+                  {/* Repeat for Images 3 and 4 (optional) */}
+                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-4">
+                    <Image
+                      src={MuskImage}
+                      alt="muskImage"
+                      height={64}
+                      width={64}
+                    />
+                  </span>
+                  <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-4">
+                    <Image
+                      src={MuskImage}
+                      alt="muskImage"
+                      height={64}
+                      width={64}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="flex mt-2">
+                <BadgeGroup alignment="center" className="mt-2">
+                  {" "}
+                  <BadgeMessage>Mihir </BadgeMessage>{" "}
+                </BadgeGroup>
+                <BadgeGroup alignment="center" className="mt-2">
+                  {" "}
+                  <BadgeMessage>Mihir </BadgeMessage>{" "}
+                </BadgeGroup>
+                <BadgeGroup alignment="center" className="mt-2">
+                  {" "}
+                  <BadgeMessage>Mihir </BadgeMessage>{" "}
+                </BadgeGroup>
+                <BadgeGroup alignment="center" className="mt-2">
+                  {" "}
+                  <BadgeMessage>Mihir </BadgeMessage>{" "}
+                </BadgeGroup>
+              </div>
+            </div>
+          </div>
+          {/* Buttons here */}
+          <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+            <button
+              onClick={toggleCreateMatchModal}
+              type="button"
+              className="w-full mt-3 inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              onClick={handleStartMatch}
+              className="w-full mt-3 inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+            >
+              Start Match
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
