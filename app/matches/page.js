@@ -8,7 +8,6 @@ import { RxCross1 } from "react-icons/rx";
 import { motion, AnimatePresence } from "framer-motion";
 import BadgeGroup from "../components/BadgeGroup";
 import BadgeMessage from "../components/BadgeMessage";
-import Link from "next/link";
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import { FaArrowAltCircleUp } from "react-icons/fa";
 
@@ -16,11 +15,13 @@ export default function LeaderBoard() {
   const [modalVisible, setModalVisible] = useState(false);
   const [CreateMatchModal, setCreateMatchModal] = useState(false);
   const [StartMatchModal, setStartMatchModal] = useState(false);
-  const [toastDisplay, setToastDisplay] = useState(true);
+  const [toastDisplay, setToastDisplay] = useState(false);
   const [player1, setPlayer1] = useState("Bhavya");
   const [player2, setPlayer2] = useState("Bhavya");
   const [player3, setPlayer3] = useState("Bhavya");
   const [player4, setPlayer4] = useState("Bhavya");
+  const [team1score, setTeam1score] = useState(0);
+  const [team2score, setTeam2score] = useState(0);
 
   // Dummy array with player data
   const dummyData = [
@@ -60,6 +61,27 @@ export default function LeaderBoard() {
     // Close the modal if no players are repeated (assuming this is the desired behavior)
     setCreateMatchModal(false);
     setStartMatchModal(true);
+  };
+
+  const handleTeam1Up = () => {
+    setTeam1score((prevScore) => Math.max(prevScore + 1, 0)); // Ensures score doesn't go below 0
+  };
+
+  const handleTeam1Down = () => {
+    setTeam1score((prevScore) => Math.max(prevScore - 1, 0)); // Ensures score doesn't go below 0
+  };
+
+  const handleTeam2Up = () => {
+    setTeam2score((prevScore) => Math.max(prevScore + 1, 0)); // Ensures score doesn't go below 0
+  };
+
+  const handleTeam2Down = () => {
+    setTeam2score((prevScore) => Math.max(prevScore - 1, 0)); // Ensures score doesn't go below 0
+  };
+
+  const handleEndMatch = () => {
+    setToastDisplay(false);
+    setStartMatchModal(false);
   };
 
   return (
@@ -505,26 +527,42 @@ export default function LeaderBoard() {
                     </div>
                     <div className="flex mt-4 w-full">
                       <div className="flex w-1/2 justify-center">
-                        <p className="text-4xl font-semibold text-black">21</p>
+                        <p className="text-4xl font-semibold text-black">
+                          {team1score}
+                        </p>
                       </div>
                       <div className="flex w-1/2 justify-center">
-                        <p className="text-4xl font-semibold text-black">17</p>
+                        <p className="text-4xl font-semibold text-black">
+                          {team2score}
+                        </p>
                       </div>
                     </div>
                     <div className="w-full flex mt-6">
                       <div className="w-1/2 flex">
-                        <span className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                        <span
+                          className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1"
+                          onClick={handleTeam1Up} // Team 1 Up button
+                        >
                           <FaArrowAltCircleUp className="text-green-300 h-16 w-16" />
                         </span>
-                        <span className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                        <span
+                          className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1"
+                          onClick={handleTeam1Down} // Team 1 Down button
+                        >
                           <FaArrowAltCircleDown className="text-red-600 h-16 w-16" />
                         </span>
                       </div>
                       <div className="w-1/2 flex">
-                        <span className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                        <span
+                          className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1"
+                          onClick={handleTeam2Up} // Team 2 Up button
+                        >
                           <FaArrowAltCircleUp className="text-green-300 h-16 w-16" />
                         </span>
-                        <span className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                        <span
+                          className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1"
+                          onClick={handleTeam2Down} // Team 2 Down button
+                        >
                           <FaArrowAltCircleDown className="text-red-600 h-16 w-16" />
                         </span>
                       </div>
@@ -536,14 +574,16 @@ export default function LeaderBoard() {
                   <button
                     onClick={toggleStartMatchModal}
                     type="button"
-                    className="w-full mt-3 inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                    className={`w-full mt-3 inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm ${toastDisplay ? "cursor-not-allowed opacity-50" : ""}`}
                   >
                     Cancel
                   </button>
                   <button
                     type="button"
-                    // onClick={handleStartMatch}
-                    className="w-full mt-3 inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                    onClick={() => {
+                      setToastDisplay(true);
+                    }}
+                    className={`w-full mt-3 inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm ${toastDisplay ? "cursor-not-allowed opacity-50" : ""}`}
                   >
                     End Match
                   </button>
@@ -561,26 +601,26 @@ export default function LeaderBoard() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 100 }}
                 id="toast-bottom-right"
-                className="fixed flex items-center w-max p-4 space-x-4 text-gray-500 bg-gray-200 divide-x rtl:divide-x-reverse divide-gray-200 rounded-lg shadow right-5 bottom-5 lg:max-w-xs"
+                className="fixed z-20 flex items-center w-max p-4 space-x-4 text-gray-500 bg-gray-200 divide-x rtl:divide-x-reverse divide-gray-200 rounded-lg shadow right-5 bottom-5 max-w-xs"
                 role="alert"
               >
                 <div className="flex">
                   <div className="ms-3 text-sm font-normal">
-                    <span className="mb-1 text-sm font-semibold text-gray-900">
-                      You must be logged in
+                    <span className="mb-1 text-sm font-semibold flex justify-center text-center text-gray-900">
+                      End this match?
                     </span>
-                    <div className="mb-2 mt-2 text-sm font-normal">
-                      Please login before moving forward
+                    <div className="mb-2 mt-2 text-sm font-normal flex justify-center text-center">
+                      You are about to end the match between {player1}/{player2}{" "}
+                      and {player3}/{player4} at {team1score}-{team2score}.
                     </div>
                     <div className="grid grid-cols-1 gap-2 h-10">
-                      <div></div>
-                      <div>
-                        <Link
-                          href="/sign-in"
-                          className="inline-flex justify-center items-center w-3/4 h-full px-2 py-1.5 text-sm font-semibold text-center text-black bg-secondary-500 rounded-lg hover:bg-secondary-600 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                      <div className="flex justify-center text-center">
+                        <button
+                          onClick={handleEndMatch}
+                          className="inline-flex justify-center items-center w-3/4 h-full px-2 py-1.5 text-sm text-center text-white bg-blue-600 rounded-lg  focus:ring-4 focus:outline-none focus:ring-blue-300"
                         >
-                          Login
-                        </Link>
+                          Yes, End Match
+                        </button>
                       </div>
                     </div>
                   </div>
