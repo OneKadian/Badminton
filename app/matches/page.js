@@ -478,7 +478,7 @@ export default function LeaderBoard() {
                     </div>
                     {/* Name tags */}
                     <div className="flex mt-4 w-4/5">
-                      <div className="flex w-1/2 mr-2">
+                      <div className="flex w-1/2 mr-3">
                         {/* Name tag 1 */}
                         <BadgeGroup alignment="center" className="mt-2">
                           {" "}
@@ -490,7 +490,7 @@ export default function LeaderBoard() {
                           <BadgeMessage>{player2}</BadgeMessage>{" "}
                         </BadgeGroup>
                       </div>
-                      <div className="flex w-1/2 ml-2">
+                      <div className="flex w-1/2 ml-3">
                         {/* Name tag 3 */}
                         <BadgeGroup alignment="center" className="mt-2">
                           {" "}
