@@ -436,7 +436,7 @@ export default function LeaderBoard() {
                     {/* <div className=" mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10"> */}
                     <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white">
                       <div className="px-8 py-8 text-lg flex">
-                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-2">
+                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-1">
                           <Image
                             src={MuskImage}
                             alt="muskImage"
@@ -445,7 +445,7 @@ export default function LeaderBoard() {
                           />
                         </span>
                         {/* Image 2 */}
-                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-2">
+                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-1">
                           <Image
                             src={MuskImage}
                             alt="muskImage"
@@ -458,7 +458,7 @@ export default function LeaderBoard() {
                           VS
                         </span>
                         {/* Repeat for Images 3 and 4 (optional) */}
-                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-2">
+                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-1">
                           <Image
                             src={MuskImage}
                             alt="muskImage"
@@ -466,7 +466,7 @@ export default function LeaderBoard() {
                             width={64}
                           />
                         </span>
-                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-2">
+                        <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-1">
                           <Image
                             src={MuskImage}
                             alt="muskImage"
