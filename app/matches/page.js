@@ -433,7 +433,8 @@ export default function LeaderBoard() {
               >
                 <div className="bg-white w-[380px] flex justify-center pt-5 pb-4 ">
                   <div className="w-[300px]">
-                    <div className=" mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10">
+                    {/* <div className=" mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10"> */}
+                    <div className=" mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white">
                       <div className="px-8 py-8 text-lg flex">
                         <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-2">
                           <Image
@@ -511,18 +512,18 @@ export default function LeaderBoard() {
                     </div>
                     <div className="w-full flex mt-6">
                       <div className="w-1/2 flex">
-                        <span className="rounded-full h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                        <span className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
                           <FaArrowAltCircleUp className="text-green-300 h-16 w-16" />
                         </span>
-                        <span className="rounded-full h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                        <span className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
                           <FaArrowAltCircleDown className="text-red-600 h-16 w-16" />
                         </span>
                       </div>
                       <div className="w-1/2 flex">
-                        <span className="rounded-full h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                        <span className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
                           <FaArrowAltCircleUp className="text-green-300 h-16 w-16" />
                         </span>
-                        <span className="rounded-full h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
+                        <span className="rounded-full cursor-pointer h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mx-1">
                           <FaArrowAltCircleDown className="text-red-600 h-16 w-16" />
                         </span>
                       </div>
