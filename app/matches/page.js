@@ -434,7 +434,7 @@ export default function LeaderBoard() {
                 <div className="bg-white w-[380px] flex justify-center pt-5 pb-4 ">
                   <div className="w-[300px]">
                     {/* <div className=" mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10"> */}
-                    <div className=" mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white">
+                    <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-white">
                       <div className="px-8 py-8 text-lg flex">
                         <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-2">
                           <Image
@@ -476,8 +476,9 @@ export default function LeaderBoard() {
                         </span>
                       </div>
                     </div>
-                    <div className="flex mt-4 w-full">
-                      <div className="flex w-1/2 mr-4">
+                    {/* Name tags */}
+                    <div className="flex mt-4 w-4/5">
+                      <div className="flex w-1/2 mr-2">
                         {/* Name tag 1 */}
                         <BadgeGroup alignment="center" className="mt-2">
                           {" "}
@@ -489,7 +490,7 @@ export default function LeaderBoard() {
                           <BadgeMessage>{player2}</BadgeMessage>{" "}
                         </BadgeGroup>
                       </div>
-                      <div className="flex w-1/2 ml-4">
+                      <div className="flex w-1/2 ml-2">
                         {/* Name tag 3 */}
                         <BadgeGroup alignment="center" className="mt-2">
                           {" "}
