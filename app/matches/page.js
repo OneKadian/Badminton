@@ -22,6 +22,7 @@ export default function LeaderBoard() {
   const [player4, setPlayer4] = useState("Bhavya");
   const [team1score, setTeam1score] = useState(0);
   const [team2score, setTeam2score] = useState(0);
+  const [playerOneImage, setplayerOneImage] = useState("");
 
   // Dummy array with player data
   const dummyData = [
@@ -35,6 +36,45 @@ export default function LeaderBoard() {
     { name: "Dev", Score: "21-19", AMP: 14 },
     { name: "Dev", Score: "21-19", AMP: 14 },
     { name: "Dev", Score: "21-19", AMP: 14 },
+  ];
+
+  const dummyMatchData = [
+    {
+      team1: ["Nakul", "Mayank"],
+      team2: ["Bhavya", "Sathish"],
+      team1_score: 21,
+      team2_score: 17,
+    },
+    {
+      team1: ["Dev", "Anirudh"],
+      team2: ["Mihir", "Sathish"],
+      team1_score: 18,
+      team2_score: 21,
+    },
+    {
+      team1: ["Nakul", "Mihir"],
+      team2: ["Dev", "Mayank"],
+      team1_score: 22,
+      team2_score: 20,
+    },
+    {
+      team1: ["Bhavya", "Anirudh"],
+      team2: ["Nakul", "Dev"],
+      team1_score: 15,
+      team2_score: 21,
+    },
+    {
+      team1: ["Mayank", "Sathish"],
+      team2: ["Mihir", "Anirudh"],
+      team1_score: 19,
+      team2_score: 21,
+    },
+    {
+      team1: ["Dev", "Bhavya"],
+      team2: ["Nakul", "Mihir"],
+      team1_score: 21,
+      team2_score: 16,
+    },
   ];
 
   const toggleModal = () => {
@@ -84,6 +124,27 @@ export default function LeaderBoard() {
     setStartMatchModal(false);
   };
 
+  const getPlayerImage = (playerName) => {
+    switch (playerName) {
+      case "Dev":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.48.04.jpeg";
+      case "Mihir":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.48.27.jpeg";
+      case "Bhavya":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.50.29.jpeg";
+      case "Nakul":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.52.07.jpeg";
+      case "Anirudh":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.59.33.jpeg";
+      case "Mayank":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2017.00.19.jpeg";
+      case "Sathish":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2017.01.05.jpeg";
+      default:
+        return ""; // Or set a default image here
+    }
+  };
+
   return (
     <div className="py-24 bg-[#F3F5F8] mt-4">
       {/* <ButtonGroup alignment="center"> */}
@@ -130,7 +191,7 @@ export default function LeaderBoard() {
           </thead>
           <tbody>
             {/* Map through the dummyData array to create table rows dynamically */}
-            {dummyData.map((player, index) => (
+            {dummyMatchData.map((data, index) => (
               // Table row - data
               <tr key={index} className="bg-white border-b text-lg">
                 <th
@@ -145,7 +206,7 @@ export default function LeaderBoard() {
                   <div className="flex flex-col justify-center items-center">
                     <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
                       <Image
-                        src={MuskImage}
+                        src={getPlayerImage(data.team1[0])}
                         alt="muskImage"
                         height={64}
                         width={64}
@@ -153,14 +214,14 @@ export default function LeaderBoard() {
                     </span>
                     <BadgeGroup alignment="center" className="mt-2">
                       {" "}
-                      <BadgeMessage>{player1}</BadgeMessage>{" "}
+                      <BadgeMessage>{data.team1[0]}</BadgeMessage>{" "}
                     </BadgeGroup>
                   </div>
                   {/* Image 2 */}
                   <div className="flex flex-col justify-center items-center">
                     <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
                       <Image
-                        src={MuskImage}
+                        src={getPlayerImage(data.team1[1])}
                         alt="muskImage"
                         height={64}
                         width={64}
@@ -168,7 +229,7 @@ export default function LeaderBoard() {
                     </span>
                     <BadgeGroup alignment="center" className="mt-2">
                       {" "}
-                      <BadgeMessage>{player1}</BadgeMessage>{" "}
+                      <BadgeMessage>{data.team1[1]}</BadgeMessage>{" "}
                     </BadgeGroup>
                   </div>
                   {/* Vs Text */}
@@ -176,11 +237,11 @@ export default function LeaderBoard() {
                     VS
                   </span>
 
-                  {/* Repeat for Images 3 and 4 (optional) */}
+                  {/* Image 3*/}
                   <div className="flex flex-col justify-center items-center">
                     <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
                       <Image
-                        src={MuskImage}
+                        src={getPlayerImage(data.team2[0])}
                         alt="muskImage"
                         height={64}
                         width={64}
@@ -188,13 +249,14 @@ export default function LeaderBoard() {
                     </span>
                     <BadgeGroup alignment="center" className="mt-2">
                       {" "}
-                      <BadgeMessage>{player1}</BadgeMessage>{" "}
+                      <BadgeMessage>{data.team2[0]}</BadgeMessage>{" "}
                     </BadgeGroup>
                   </div>
+                  {/* Image 4 */}
                   <div className="flex flex-col justify-center items-center">
                     <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
                       <Image
-                        src={MuskImage}
+                        src={getPlayerImage(data.team2[1])}
                         alt="muskImage"
                         height={64}
                         width={64}
@@ -202,11 +264,13 @@ export default function LeaderBoard() {
                     </span>
                     <BadgeGroup alignment="center" className="mt-2">
                       {" "}
-                      <BadgeMessage>{player1}</BadgeMessage>{" "}
+                      <BadgeMessage>{data.team2[1]}</BadgeMessage>{" "}
                     </BadgeGroup>
                   </div>
                 </td>
-                <td className="px-8 py-8 text-lg">{player.Score}</td>
+                <td className="px-8 py-8 text-lg">
+                  {data.team1_score}-{data.team2_score}
+                </td>
                 {/* <td className="px-8 py-8 text-lg">{player.AMP}</td> */}
                 <td className="px-8 py-8 text-lg text-right">
                   <button

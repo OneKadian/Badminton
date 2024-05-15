@@ -2,10 +2,30 @@ import SectionContainer from "./SectionContainer";
 import BadgeGroup from "./BadgeGroup";
 import BadgeMessage from "./BadgeMessage";
 import { RiVipCrownFill } from "react-icons/ri";
-import MuskImage from "../public/musk.jpg";
 import Image from "next/image";
 
 const Podium = () => {
+  const getPlayerImage = (playerName) => {
+    switch (playerName) {
+      case "Dev":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.48.04.jpeg";
+      case "Mihir":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.48.27.jpeg";
+      case "Bhavya":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.50.29.jpeg";
+      case "Nakul":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.52.07.jpeg";
+      case "Anirudh":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.59.33.jpeg";
+      case "Mayank":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2017.00.19.jpeg";
+      case "Sathish":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2017.01.05.jpeg";
+      default:
+        return ""; // Or set a default image here
+    }
+  };
+
   return (
     <SectionContainer className="page-banner--container py-10 flex justify-center">
       <div className="flex justify-center px-4 container podium">
@@ -14,7 +34,13 @@ const Podium = () => {
           {/* Image element */}
           <div className="h-max w-full flex items-center justify-center">
             <div className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
-              <Image src={MuskImage} alt="muskImage" height={64} width={64} />
+              {/* <Image src={MuskImage} alt="muskImage" height={64} width={64} /> */}
+              <Image
+                src={getPlayerImage("Mayank")}
+                alt="muskImage"
+                height={64}
+                width={64}
+              />
             </div>
           </div>
           {/* <p className="text-center text-black">Annecy</p> */}
@@ -39,7 +65,12 @@ const Podium = () => {
           {/* Image element */}
           <div className="h-max w-full flex items-center justify-center">
             <div className="rounded-full border-2 border-[#facc15] h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
-              <Image src={MuskImage} alt="muskImage" height={64} width={64} />
+              <Image
+                src={getPlayerImage("Nakul")}
+                alt="muskImage"
+                height={64}
+                width={64}
+              />
             </div>
           </div>
           <BadgeGroup alignment="center" className="mt-2">
@@ -68,7 +99,12 @@ const Podium = () => {
           {/* Image element */}
           <div className="h-max w-full flex items-center justify-center">
             <div className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
-              <Image src={MuskImage} alt="muskImage" height={64} width={64} />
+              <Image
+                src={getPlayerImage("Mihir")}
+                alt="muskImage"
+                height={64}
+                width={64}
+              />
             </div>
           </div>
           <BadgeGroup alignment="center" className="mt-2">

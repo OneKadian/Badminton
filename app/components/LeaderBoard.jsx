@@ -1,5 +1,4 @@
 "use client";
-import MuskImage from "../public/musk.jpg";
 import Image from "next/image";
 import BadgeGroup from "./BadgeGroup.jsx";
 import BadgeMessage from "./BadgeMessage.jsx";
@@ -22,6 +21,27 @@ export default function LeaderBoard() {
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
+  };
+
+  const getPlayerImage = (playerName) => {
+    switch (playerName) {
+      case "Dev":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.48.04.jpeg";
+      case "Mihir":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.48.27.jpeg";
+      case "Bhavya":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.50.29.jpeg";
+      case "Nakul":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.52.07.jpeg";
+      case "Anirudh":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2016.59.33.jpeg";
+      case "Mayank":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2017.00.19.jpeg";
+      case "Sathish":
+        return "https://osdblyvwidixouibqkrf.supabase.co/storage/v1/object/public/Badminton/WhatsApp%20Image%202024-05-14%20at%2017.01.05.jpeg";
+      default:
+        return ""; // Or set a default image here
+    }
   };
 
   return (
@@ -70,7 +90,7 @@ export default function LeaderBoard() {
                   <div className="flex flex-col justify-center items-center">
                     <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
                       <Image
-                        src={MuskImage}
+                        src={getPlayerImage(player.name)}
                         alt="muskImage"
                         height={64}
                         width={64}
