@@ -26,7 +26,7 @@ export default function Home() {
     <>
       <div className="main-wrapper bg-[#F3F5F8] relative z-10 pb-20 pt-20 ">
         {/* Page Banner  */}
-        <Podium />
+        {/* <Podium /> */}
         <SectionContainer id="faq" className="faq">
           <LeaderBoard />
         </SectionContainer>

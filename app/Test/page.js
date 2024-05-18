@@ -54,7 +54,7 @@ export default function Shipping() {
       setIsLoading(true); // Set loading to true when starting the operation
       const token = await getToken({ template: "supabaseIndieHackerKit" });
       const supabase = await supabaseReadAuth(token);
-      const { data, error } = await supabase.from("Ideas").insert({
+      const { error } = await supabase.from("Ideas").insert({
         user_id: userId,
         idea: event.target[0].value,
         details: event.target[1].value,

@@ -436,3 +436,58 @@
     </div>
   );
 }
+
+// const handleEndMatch = async (event) => {
+//   event.preventDefault();
+//   setToastDisplay(false);
+//   setStartMatchModal(false);
+//   try {
+//     setIsLoading(true);
+
+//     const team1 = [player1, player2];
+//     const team2 = [player3, player4];
+
+//     const { error } = await insertBadmintonMatches(
+//       team1,
+//       team2,
+//       team1score,
+//       team2score,
+//       creator
+//     );
+//     if (!error) {
+//       const fetchedMatches = await getBadmintonMatches();
+//       setMatchRecords(fetchedMatches);
+//     } else {
+//       console.log("Match inserted successfully!");
+//       // Handle success (e.g., display success message or clear form data)
+//     }
+//   } catch (error) {
+//     console.error("Error adding match:", error);
+//   } finally {
+//     setIsLoading(false); // Set loading to false regardless of success or failure
+//   }
+// };
+// const handleEndMatch = async () => {
+//   setToastDisplay(false);
+//   setStartMatchModal(false);
+
+//   const team1 = [player1, player2];
+//   const team2 = [player3, player4];
+
+//   const { error } = await insertBadmintonMatches(
+//     team1,
+//     team2,
+//     team1score,
+//     team2score,
+//     creator
+//   );
+//   if (!error) {
+//     setIsLoading(true);
+//     const fetchedMatches = await getBadmintonMatches();
+//     setMatches(fetchedMatches);
+//     setIsLoading(false);
+//   } else {
+//     console.log("Match inserted successfully!");
+//     // Handle success (e.g., display success message or clear form data)
+//   }
+// };

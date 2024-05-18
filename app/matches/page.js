@@ -1,8 +1,7 @@
 "use client";
-import MuskImage from "../public/musk.jpg";
 import Image from "next/image";
 import { FaRegEye } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaPlus } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,8 +9,15 @@ import BadgeGroup from "../components/BadgeGroup";
 import BadgeMessage from "../components/BadgeMessage";
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import { FaArrowAltCircleUp } from "react-icons/fa";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import {
+  getBadmintonMatches,
+  insertBadmintonMatches,
+} from "@/supabase/supabaseClient";
 
 export default function LeaderBoard() {
+  const [isLoading, setIsLoading] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [CreateMatchModal, setCreateMatchModal] = useState(false);
   const [StartMatchModal, setStartMatchModal] = useState(false);
@@ -22,60 +28,21 @@ export default function LeaderBoard() {
   const [player4, setPlayer4] = useState("Bhavya");
   const [team1score, setTeam1score] = useState(0);
   const [team2score, setTeam2score] = useState(0);
-  const [playerOneImage, setplayerOneImage] = useState("");
+  const [creator, setCreator] = useState("Mihir");
+  const [matchRecords, setMatchRecords] = useState([]);
+  const [isExploding, setIsExploding] = useState(false);
+  const confettiRef = useRef(null);
 
-  // Dummy array with player data
-  const dummyData = [
-    { name: "Mayank", Score: "21-17", AMP: 20 },
-    { name: "Nakul", Score: "21-15", AMP: 19 },
-    { name: "Bhavya", Score: "21-14", AMP: 18 },
-    { name: "Sathish", Score: "21-16", AMP: 17 },
-    { name: "Anirudh", Score: "21-18", AMP: 16 },
-    { name: "Mihir", Score: "21-20", AMP: 15 },
-    { name: "Dev", Score: "21-19", AMP: 14 },
-    { name: "Dev", Score: "21-19", AMP: 14 },
-    { name: "Dev", Score: "21-19", AMP: 14 },
-    { name: "Dev", Score: "21-19", AMP: 14 },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true); // Set loading to true before fetching
+      const fetchedMatches = await getBadmintonMatches();
+      setMatchRecords(fetchedMatches);
+      setIsLoading(false); // Set loading to false after fetching
+    };
 
-  const dummyMatchData = [
-    {
-      team1: ["Nakul", "Mayank"],
-      team2: ["Bhavya", "Sathish"],
-      team1_score: 21,
-      team2_score: 17,
-    },
-    {
-      team1: ["Dev", "Anirudh"],
-      team2: ["Mihir", "Sathish"],
-      team1_score: 18,
-      team2_score: 21,
-    },
-    {
-      team1: ["Nakul", "Mihir"],
-      team2: ["Dev", "Mayank"],
-      team1_score: 22,
-      team2_score: 20,
-    },
-    {
-      team1: ["Bhavya", "Anirudh"],
-      team2: ["Nakul", "Dev"],
-      team1_score: 15,
-      team2_score: 21,
-    },
-    {
-      team1: ["Mayank", "Sathish"],
-      team2: ["Mihir", "Anirudh"],
-      team1_score: 19,
-      team2_score: 21,
-    },
-    {
-      team1: ["Dev", "Bhavya"],
-      team2: ["Nakul", "Mihir"],
-      team1_score: 21,
-      team2_score: 16,
-    },
-  ];
+    fetchData();
+  }, []);
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
@@ -119,9 +86,45 @@ export default function LeaderBoard() {
     setTeam2score((prevScore) => Math.max(prevScore - 1, 0)); // Ensures score doesn't go below 0
   };
 
-  const handleEndMatch = () => {
+  const handleEndMatch = async (event) => {
+    event.preventDefault();
     setToastDisplay(false);
     setStartMatchModal(false);
+    try {
+      setIsLoading(true);
+
+      const team1 = [player1, player2];
+      const team2 = [player3, player4];
+
+      const { error } = await insertBadmintonMatches(
+        team1,
+        team2,
+        team1score,
+        team2score,
+        creator
+      );
+
+      if (!error) {
+        // Fetch the updated match list
+        const fetchedMatches = await getBadmintonMatches();
+        // Update the state holding match data
+        setMatchRecords(fetchedMatches);
+        setPlayer1("Bhavya");
+        setPlayer2("Bhavya");
+        setPlayer3("Bhavya");
+        setPlayer4("Bhavya");
+        setTeam1score(0);
+        setTeam2score(0);
+      } else {
+        console.log("Error inserting match:", error);
+        // Handle error (e.g., display error message)
+      }
+    } catch (error) {
+      console.error("Error adding match:", error);
+      // Handle error (e.g., display error message)
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const getPlayerImage = (playerName) => {
@@ -151,6 +154,7 @@ export default function LeaderBoard() {
       <div className="flex justify-center items-center">
         <button
           onClick={toggleCreateMatchModal}
+          disabled={isLoading}
           className="inline-flex w-3/5 cursor-pointer items-center justify-center gap-3 rounded-lg px-8 py-2 font-semibold  text-white transition-colors duration-300 bg-blue-600 md:w-auto"
         >
           Create Match
@@ -160,138 +164,142 @@ export default function LeaderBoard() {
         </button>
       </div>
 
-      <div
-        className="relative h-[500px] mt-8 px-8 overflow-x-auto shadow-md bg-[#F3F5F8] sm:rounded-lg"
-        // style={{ maxHeight: "80vh", overflowY: "auto" }}
-      >
-        <table className="w-full px-8 text-sm text-left rtl:text-right text-gray-500">
-          {/* Table head - properties */}
-          {/* Table head - properties */}
-          <thead className="text-lg text-gray-700 bg-gray-300">
-            <tr>
-              <th scope="col" className="px-8 py-8">
-                Match Number
-              </th>
-              <th scope="col" className="px-8 py-8">
-                Players
-              </th>
-              <th scope="col" className="px-8 py-8">
-                Score
-              </th>
-              {/* <th scope="col" className="px-8 py-8">
-                Score
-              </th> */}
-              <th scope="col" className="px-8 py-8">
-                <span className="sr-only">View</span>
-              </th>
-              <th scope="col" className="px-8 py-8">
-                <span className="sr-only">Edit</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* Map through the dummyData array to create table rows dynamically */}
-            {dummyMatchData.map((data, index) => (
-              // Table row - data
-              <tr key={index} className="bg-white border-b text-lg">
-                <th
-                  scope="row"
-                  className="px-8 py-8 text-lg font-medium text-gray-900 whitespace-nowrap"
-                >
-                  {index + 1}
+      <div className="relative h-[500px] mt-8 px-8 overflow-x-auto shadow-md bg-[#F3F5F8] sm:rounded-lg">
+        {isLoading ? (
+          <div className="w-full h-max flex justify-center">
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <CircularProgress />
+            </Box>
+          </div>
+        ) : (
+          <table className="w-full px-8 text-sm text-left rtl:text-right text-gray-500">
+            {/* Table head - properties */}
+            {/* Table head - properties */}
+            <thead className="text-lg text-gray-700 bg-gray-300">
+              <tr>
+                <th scope="col" className="px-8 py-8">
+                  Match Number
+                </th>
+                <th scope="col" className="px-8 py-8">
+                  Players
+                </th>
+                <th scope="col" className="px-8 py-8">
+                  Score
                 </th>
 
-                <td className="px-8 py-8 text-lg flex">
-                  {/* Image 1 */}
-                  <div className="flex flex-col justify-center items-center">
-                    <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
-                      <Image
-                        src={getPlayerImage(data.team1[0])}
-                        alt="muskImage"
-                        height={64}
-                        width={64}
-                      />
-                    </span>
-                    <BadgeGroup alignment="center" className="mt-2">
-                      {" "}
-                      <BadgeMessage>{data.team1[0]}</BadgeMessage>{" "}
-                    </BadgeGroup>
-                  </div>
-                  {/* Image 2 */}
-                  <div className="flex flex-col justify-center items-center">
-                    <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
-                      <Image
-                        src={getPlayerImage(data.team1[1])}
-                        alt="muskImage"
-                        height={64}
-                        width={64}
-                      />
-                    </span>
-                    <BadgeGroup alignment="center" className="mt-2">
-                      {" "}
-                      <BadgeMessage>{data.team1[1]}</BadgeMessage>{" "}
-                    </BadgeGroup>
-                  </div>
-                  {/* Vs Text */}
-                  <span className="text-lg text-black font-bold flex items-center mx-2">
-                    VS
-                  </span>
-
-                  {/* Image 3*/}
-                  <div className="flex flex-col justify-center items-center">
-                    <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
-                      <Image
-                        src={getPlayerImage(data.team2[0])}
-                        alt="muskImage"
-                        height={64}
-                        width={64}
-                      />
-                    </span>
-                    <BadgeGroup alignment="center" className="mt-2">
-                      {" "}
-                      <BadgeMessage>{data.team2[0]}</BadgeMessage>{" "}
-                    </BadgeGroup>
-                  </div>
-                  {/* Image 4 */}
-                  <div className="flex flex-col justify-center items-center">
-                    <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
-                      <Image
-                        src={getPlayerImage(data.team2[1])}
-                        alt="muskImage"
-                        height={64}
-                        width={64}
-                      />
-                    </span>
-                    <BadgeGroup alignment="center" className="mt-2">
-                      {" "}
-                      <BadgeMessage>{data.team2[1]}</BadgeMessage>{" "}
-                    </BadgeGroup>
-                  </div>
-                </td>
-                <td className="px-8 py-8 text-lg">
-                  {data.team1_score}-{data.team2_score}
-                </td>
-                {/* <td className="px-8 py-8 text-lg">{player.AMP}</td> */}
-                <td className="px-8 py-8 text-lg text-right">
-                  <button
-                    onClick={toggleModal}
-                    className="font-medium text-blue-600 hover:underline"
-                  >
-                    View
-                  </button>
-                </td>
-                <td className="px-8 py-8 text-lg text-right">
-                  <button
-                    onClick={toggleModal}
-                    className="font-medium text-blue-600 hover:underline"
-                  >
-                    Edit
-                  </button>
-                </td>
+                <th scope="col" className="px-8 py-8">
+                  <span className="sr-only">View</span>
+                </th>
+                <th scope="col" className="px-8 py-8">
+                  <span className="sr-only">Edit</span>
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {/* Map through the matchRecord array to create table rows dynamically */}
+              {matchRecords.map((data, index) => (
+                // Table row - data
+                <tr key={index} className="bg-white border-b text-lg">
+                  <th
+                    scope="row"
+                    className="px-8 py-8 text-lg font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    {index + 1}
+                  </th>
+
+                  <td className="px-8 py-8 text-lg flex">
+                    {/* Image 1 */}
+                    <div className="flex flex-col justify-center items-center">
+                      <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
+                        <Image
+                          src={getPlayerImage(data.team1[0])}
+                          alt="muskImage"
+                          height={64}
+                          width={64}
+                        />
+                      </span>
+                      <BadgeGroup alignment="center" className="mt-2">
+                        {" "}
+                        <BadgeMessage>{data.team1[0]}</BadgeMessage>{" "}
+                      </BadgeGroup>
+                    </div>
+                    {/* Image 2 */}
+                    <div className="flex flex-col justify-center items-center">
+                      <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
+                        <Image
+                          src={getPlayerImage(data.team1[1])}
+                          alt="muskImage"
+                          height={64}
+                          width={64}
+                        />
+                      </span>
+                      <BadgeGroup alignment="center" className="mt-2">
+                        {" "}
+                        <BadgeMessage>{data.team1[1]}</BadgeMessage>{" "}
+                      </BadgeGroup>
+                    </div>
+                    {/* Vs Text */}
+                    <span className="text-lg text-black font-bold flex items-center mx-2">
+                      VS
+                    </span>
+
+                    {/* Image 3*/}
+                    <div className="flex flex-col justify-center items-center">
+                      <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
+                        <Image
+                          src={getPlayerImage(data.team2[0])}
+                          alt="muskImage"
+                          height={64}
+                          width={64}
+                        />
+                      </span>
+                      <BadgeGroup alignment="center" className="mt-2">
+                        {" "}
+                        <BadgeMessage>{data.team2[0]}</BadgeMessage>{" "}
+                      </BadgeGroup>
+                    </div>
+                    {/* Image 4 */}
+                    <div className="flex flex-col justify-center items-center">
+                      <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
+                        <Image
+                          src={getPlayerImage(data.team2[1])}
+                          alt="muskImage"
+                          height={64}
+                          width={64}
+                        />
+                      </span>
+                      <BadgeGroup alignment="center" className="mt-2">
+                        {" "}
+                        <BadgeMessage>{data.team2[1]}</BadgeMessage>{" "}
+                      </BadgeGroup>
+                    </div>
+                  </td>
+                  <td className="px-8 py-8 text-lg">
+                    {data.team1Score}-{data.team2Score}
+                  </td>
+                  {/* <td className="px-8 py-8 text-lg">{player.AMP}</td> */}
+                  <td className="px-8 py-8 text-lg text-right">
+                    <button
+                      onClick={toggleModal}
+                      className="font-medium text-blue-600 hover:underline"
+                    >
+                      View
+                    </button>
+                  </td>
+                  <td className="px-8 py-8 text-lg text-right">
+                    <button
+                      onClick={toggleModal}
+                      className="font-medium text-blue-600 hover:underline"
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
         {/*View/Edit Modal */}
         {modalVisible && (
           <div className="fixed z-10 inset-0 overflow-y-auto">
@@ -356,7 +364,6 @@ export default function LeaderBoard() {
           </div>
         )}
         {/* Create match modal */}
-        {/* {CreateMatchModal && <MatchModal modalDisplay={CreateMatchModal} />} */}
         {CreateMatchModal && (
           <div className="fixed z-10 inset-0 overflow-y-auto">
             <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -524,7 +531,7 @@ export default function LeaderBoard() {
                       <div className="px-8 py-8 text-lg flex">
                         <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-1">
                           <Image
-                            src={MuskImage}
+                            src={getPlayerImage(player1)}
                             alt="muskImage"
                             height={64}
                             width={64}
@@ -533,7 +540,7 @@ export default function LeaderBoard() {
                         {/* Image 2 */}
                         <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-1">
                           <Image
-                            src={MuskImage}
+                            src={getPlayerImage(player2)}
                             alt="muskImage"
                             height={64}
                             width={64}
@@ -543,10 +550,10 @@ export default function LeaderBoard() {
                         <span className="text-lg text-black font-bold flex items-center mx-2">
                           VS
                         </span>
-                        {/* Repeat for Images 3 and 4 (optional) */}
+                        {/* Image 3 */}
                         <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden mr-1">
                           <Image
-                            src={MuskImage}
+                            src={getPlayerImage(player3)}
                             alt="muskImage"
                             height={64}
                             width={64}
@@ -554,7 +561,7 @@ export default function LeaderBoard() {
                         </span>
                         <span className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden ml-1">
                           <Image
-                            src={MuskImage}
+                            src={getPlayerImage(player4)}
                             alt="muskImage"
                             height={64}
                             width={64}
@@ -668,7 +675,7 @@ export default function LeaderBoard() {
                 className="fixed z-20 flex items-center w-max p-4 space-x-4 text-gray-500 bg-gray-200 divide-x rtl:divide-x-reverse divide-gray-200 rounded-lg shadow right-5 bottom-5 max-w-xs"
                 role="alert"
               >
-                <div className="flex">
+                <form className="flex" onSubmit={handleEndMatch}>
                   <div className="ms-3 text-sm font-normal">
                     <span className="mb-1 text-sm font-semibold flex justify-center text-center text-gray-900">
                       End this match?
@@ -680,11 +687,12 @@ export default function LeaderBoard() {
                     <div className="grid grid-cols-1 gap-2 h-10">
                       <div className="flex justify-center text-center">
                         <button
-                          onClick={handleEndMatch}
+                          type="submit"
                           className="inline-flex justify-center items-center w-3/4 h-full px-2 py-1.5 text-sm text-center text-white bg-blue-600 rounded-lg  focus:ring-4 focus:outline-none focus:ring-blue-300"
                         >
                           Yes, End Match
                         </button>
+                        {isExploding && <canvas ref={confettiRef} />}
                       </div>
                     </div>
                   </div>
@@ -699,7 +707,7 @@ export default function LeaderBoard() {
                   >
                     <RxCross1 className="text-black" />
                   </button>
-                </div>
+                </form>
               </motion.div>
             )}
           </AnimatePresence>

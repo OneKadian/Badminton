@@ -4,7 +4,7 @@ import BadgeMessage from "./BadgeMessage";
 import { RiVipCrownFill } from "react-icons/ri";
 import Image from "next/image";
 
-const Podium = () => {
+const Podium = ({ rank1, rank2, rank3 }) => {
   const getPlayerImage = (playerName) => {
     switch (playerName) {
       case "Dev":
@@ -36,7 +36,7 @@ const Podium = () => {
             <div className="rounded-full border-2 border-black h-16 w-16 text-3xl flex justify-center items-center overflow-hidden">
               {/* <Image src={MuskImage} alt="muskImage" height={64} width={64} /> */}
               <Image
-                src={getPlayerImage("Mayank")}
+                src={getPlayerImage(rank1)}
                 alt="muskImage"
                 height={64}
                 width={64}
@@ -45,7 +45,7 @@ const Podium = () => {
           </div>
           {/* <p className="text-center text-black">Annecy</p> */}
           <BadgeGroup alignment="center" className="mt-2">
-            <BadgeMessage>Mihir </BadgeMessage>
+            <BadgeMessage>{rank2} </BadgeMessage>
           </BadgeGroup>
           {/* <BadgeGroup2 alignment="center" className="mt-2">
             <BadgeMessage>AMP 19</BadgeMessage>
@@ -74,7 +74,7 @@ const Podium = () => {
             </div>
           </div>
           <BadgeGroup alignment="center" className="mt-2">
-            <BadgeMessage>Mayank </BadgeMessage>
+            <BadgeMessage>{rank1} </BadgeMessage>
           </BadgeGroup>
           {/* <BadgeGroup2 alignment="center" className="mt-2">
             <BadgeMessage>AMP 20</BadgeMessage>
@@ -108,7 +108,7 @@ const Podium = () => {
             </div>
           </div>
           <BadgeGroup alignment="center" className="mt-2">
-            <BadgeMessage>Bhavya </BadgeMessage>
+            <BadgeMessage>{rank3} </BadgeMessage>
           </BadgeGroup>
           {/* <BadgeGroup2 alignment="center" className="mt-2">
             <BadgeMessage>AMP 18</BadgeMessage>
