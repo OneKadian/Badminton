@@ -57,9 +57,6 @@ const Header = async () => {
                   href="/sign-in"
                   // className="btn btn--secondary ml-4"
                   className="inline-flex text-base md:hidden w-max cursor-pointer items-center justify-center gap-3 rounded-lg px-4 py-2 btn btn--secondary md:w-auto"
-                  // className="text-lg font-semibold leading-6 mx-2 inline-flex md:hidden
-                  // cursor-pointer items-center justify-center gap-3 rounded-lg bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 ml-4 to-neutral-500 border border-solid border-neutral-400 transition-colors duration-300
-                  // "
                 >
                   Login
                 </Link>
