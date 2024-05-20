@@ -2,7 +2,6 @@ import Footer from "./components/Footer.jsx";
 import SectionContainer from "./components/SectionContainer.jsx";
 import LeaderBoard from "./components/LeaderBoard.jsx";
 
-// import ContentImage from "./components/ContentImage.jsx";
 export default function Home() {
   return (
     <>
