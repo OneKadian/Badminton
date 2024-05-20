@@ -4,47 +4,15 @@ import Image from "next/image";
 import ButtonGroup from "./ButtonGroup";
 import footerLogo from "../public/nutritrack.svg";
 import { FaArrowRightLong } from "react-icons/fa6";
+import Logo from "../public/shuttle.png";
 
 const DATA = [
   {
-    title: "Template",
+    title: "Records",
     items: [
       {
-        label: "Features",
-        href: "#features",
-      },
-      {
-        label: "Testimonials",
-        href: "#testimonials",
-      },
-      {
-        label: "FAQ",
-        href: "#faq",
-      },
-    ],
-  },
-  {
-    title: "Company",
-    items: [
-      {
-        label: "About",
-        href: "https://github.com/christian-luntok/",
-        target: "_blank",
-      },
-      {
-        label: "Twitter",
-        href: "https://github.com/christian-luntok/",
-        target: "_blank",
-      },
-      {
-        label: "Instagram",
-        href: "https://github.com/christian-luntok/",
-        target: "_blank",
-      },
-      {
-        label: "Facebook",
-        href: "https://github.com/christian-luntok/",
-        target: "_blank",
+        label: "Matches",
+        href: "/matches",
       },
     ],
   },
@@ -62,16 +30,16 @@ const Footer = () => {
           <div className="footer-links mb-12 grid grid-cols-2 gap-8 md:mb-16 md:grid-cols-8 lg:grid-cols-12">
             <div className="col-span-6">
               <div className="footer--logo grid gap-8">
-                <Link href="/">
+                {/* <Link href="/">
                   <Image
-                    src={footerLogo}
+                    src={Logo}
                     alt="logo"
                     className="h-10 w-auto"
                     height="25"
                     width="100"
                     priority
                   />
-                </Link>
+                </Link> */}
                 {/* Get Template button; remove if not used */}
                 <ButtonGroup alignment="left">
                   <a
@@ -80,7 +48,7 @@ const Footer = () => {
                     // className="btn btn--secondary"
                     className="inline-flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg px-8 py-2 font-semibold btn btn--secondary md:w-auto"
                   >
-                    Get Template
+                    Watch me Build
                     <FaArrowRightLong className="text-black" />
                   </a>
                 </ButtonGroup>
@@ -124,7 +92,16 @@ const Footer = () => {
       <SectionContainer className="footer-credits relative z-10">
         <div className="wrap wrap-px py-6">
           <p className="my-0">
-            © {year} Nutritrack. All rights reserved{"  "}
+            Built by{" "}
+            <span>
+              <Link
+                href="http://github.com/OneKadian"
+                className="text-decoration-line: underline"
+              >
+                Anirudh Kadian
+              </Link>
+            </span>{" "}
+            with 💓{"  "}
           </p>
         </div>
       </SectionContainer>

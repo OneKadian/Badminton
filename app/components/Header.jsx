@@ -3,11 +3,13 @@ import Image from "next/image";
 import SectionContainer from "./SectionContainer";
 import Nav from "./Nav";
 import ButtonGroup from "./ButtonGroup";
-import Logo from "../public/nutritrack.svg";
+// import Logo from "../public/nutritrack.svg";
+// import Logo from "../public/GoodMinton.jpg";
+import Logo from "../public/shuttle.png";
 import { FaArrowRight } from "react-icons/fa";
 import { UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs";
-
+import { GiShuttlecock } from "react-icons/gi";
 const Header = async () => {
   const user = await currentUser();
   return (
@@ -20,15 +22,19 @@ const Header = async () => {
         <div className="header-logo--container">
           <h1 className="logo mb-0">
             <Link href="/">
-              <Image
+              {/* <Image
                 src={Logo}
                 alt="logo"
                 className="h-6 w-auto"
                 height="24"
                 width="100"
-              />
+              /> */}
+              <GiShuttlecock className="text-black text-4xl" />
             </Link>
           </h1>
+          {/* <Link href="/">
+          <h1 className="text-3xl font-semibold text-black">Good Minton</h1>
+        </Link> */}
         </div>
         <SectionContainer className="flex md:flex-row-reverse items-center ml-auto">
           {/* <Nav userStatus={user} /> */}

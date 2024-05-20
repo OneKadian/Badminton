@@ -8,11 +8,7 @@ import { useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { RxCross1 } from "react-icons/rx";
 
-const navigation = [
-  { name: "Matches", href: "/matches" },
-  { name: "Testimonials", href: "/#testimonials" },
-  { name: "FAQ?", href: "/#faq" },
-];
+const navigation = [{ name: "Matches", href: "/matches" }];
 
 const Nav = ({ userStatus }) => {
   const pathname = usePathname();

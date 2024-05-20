@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-300">
       {/* <SignIn redirectUrl="/" /> */}
-      <SignIn redirectUrl="/" />
+      <SignIn />
     </div>
   );
 }

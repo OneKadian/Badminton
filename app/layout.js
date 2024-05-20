@@ -14,9 +14,6 @@ export default function RootLayout({ children, className = "" }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        {/* <main className={`main relative overflow-hidden ${className}`}> */}
-
-        {/* <main className={`main relative overflow-hidden`}> */}
         <body className={inter.className}>
           <Header />
           {children}
