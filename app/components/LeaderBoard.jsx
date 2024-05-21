@@ -32,42 +32,9 @@ export default function LeaderBoard() {
       }
     });
 
-    return matchCount > 0 ? totalPoints / matchCount : 0;
+    const average = matchCount > 0 ? totalPoints / matchCount : 0;
+    return parseFloat(average.toFixed(1)); // Round to one decimal place
   };
-  //   const fetchData = async () => {
-  //     setIsLoading(true);
-  //     const fetchedMatches = await getBadmintonMatches();
-  //     setMatchRecords(fetchedMatches);
-
-  //     const players = [
-  //       "Bhavya",
-  //       "Nakul",
-  //       "Mihir",
-  //       "Sathish",
-  //       "Mayank",
-  //       "Anirudh",
-  //       "Dev",
-  //     ];
-
-  //     const stats = players.map((player) => {
-  //       const matchesPlayed = fetchedMatches.filter(
-  //         (match) =>
-  //           match.team1.includes(player) || match.team2.includes(player)
-  //       ).length;
-  //       const AMP = calculateAMP(player, fetchedMatches);
-  //       return { name: player, matches: matchesPlayed, score: AMP };
-  //     });
-
-  //     // Sort the stats array in descending order based on the score
-  //     stats.sort((a, b) => b.score - a.score);
-
-  //     setPlayerStats(stats);
-  //     setIsLoading(false);
-  //     console.log(stats); // Log the sorted stats array
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -106,15 +73,6 @@ export default function LeaderBoard() {
   }, []);
 
   // Dummy array with player data
-  const dummyData = [
-    { name: "Mayank", matchesPlayed: 17, AMP: 20 },
-    { name: "Nakul", matchesPlayed: 15, AMP: 19 },
-    { name: "Bhavya", matchesPlayed: 14, AMP: 18 },
-    { name: "Sathish", matchesPlayed: 16, AMP: 17 },
-    { name: "Anirudh", matchesPlayed: 18, AMP: 16 },
-    { name: "Mihir", matchesPlayed: 20, AMP: 15 },
-    { name: "Dev", matchesPlayed: 19, AMP: 14 },
-  ];
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
